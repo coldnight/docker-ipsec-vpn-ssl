@@ -21,7 +21,7 @@ Based on Debian 9 (Stretch) with [strongSwan 5.7.2](https://www.strongswan.org/)
 
 First we need 3 files to map in docker container:
 
-- RSA private key that encoded in PEM format.
+1. RSA private key that encoded in PEM format.
 
     Your key's conent should ends with `-----END RSA PRIVATE KEY-----`.
     Otherwise, if your key's content ends with `-----END PRIVATE KEY-----`, 
@@ -31,8 +31,8 @@ First we need 3 files to map in docker container:
     openssl rsa -in /path/to/privkey.pem -out /path/to/privkey.key
     ```
 
-- Cert file with chain and encoded in PEM format.(`fullchain.pem`)
-- XAuth secret file:
+2. Cert file with chain and encoded in PEM format.(`fullchain.pem`)
+3. Auth secret file:
 
     An example
 
