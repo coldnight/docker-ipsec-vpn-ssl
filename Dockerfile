@@ -5,7 +5,7 @@ WORKDIR /usr/src
 
 RUN apt update \
     && apt install -y build-essential libgmp10 libgmp3-dev libssl-dev \
-        pkg-config libpcsclite-dev libpam0g-dev curl kmod
+        pkg-config libpcsclite-dev libpam0g-dev curl kmod iptables
 
 ENV STRONG_SWAN_VER 5.7.2
 
