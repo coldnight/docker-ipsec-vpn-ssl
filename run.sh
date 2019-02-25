@@ -4,6 +4,7 @@ set -e
 
 DOMAIN_FN=$(echo $DOMAIN_NAME | sed -e 's/\./_/g')
 
+SUBNET="172.16.0.0/16"
 
 cat <<EOF > /etc/ipsec.conf
 config setup
@@ -22,7 +23,7 @@ conn %default
     leftfirewall=yes
     right=%any
     rightdns=8.8.8.8,8.8.4.4
-    rightsourceip=172.16.0.0/16
+    rightsourceip=${SUBNET}
     rightauth=psk
     dpdaction=clear
     dpddelay=300s
@@ -61,5 +62,8 @@ if [[ -e /etc/ipsec-xauth.secrets ]]
 then
     cat /etc/ipsec-xauth.secrets >> /etc/ipsec.secrets
 fi
+iptables -I POSTROUTING 1 -s $SUBNET -j MASQUERADE -t nat
+iptables -I FORWARD -m conntrack --ctstate SNAT -j ACCEPT
+iptables -I FORWARD -m conntrack -s $SUBNET --ctstate NEW,RELATED,ESTABLISHED -j ACCEPT
 
 exec ipsec start --nofork
