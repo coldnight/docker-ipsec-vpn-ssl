@@ -17,9 +17,11 @@ Based on Debian 9 (Stretch) with [strongSwan 5.7.2](https://www.strongswan.org/)
 
 ## Usage
 
+### Prepare
+
 First we need 3 files to map in docker container:
 
-- RSA private key that encoded in PEM or base64 format.
+- RSA private key that encoded in PEM format.
 
     Your key's conent should ends with `-----END RSA PRIVATE KEY-----`.
     Otherwise, if your key's content ends with `-----END PRIVATE KEY-----`, 
@@ -29,7 +31,7 @@ First we need 3 files to map in docker container:
     openssl rsa -in /path/to/privkey.pem -out /path/to/privkey.key
     ```
 
-- Cert file with chain and encoded in PEM or base64 format.(`fullchain.pem`)
+- Cert file with chain and encoded in PEM format.(`fullchain.pem`)
 - XAuth secret file:
 
     An example
@@ -37,6 +39,8 @@ First we need 3 files to map in docker container:
     ```
     admin: XAUTH "P@ssw0rd"
     ```
+
+### Starting server
 
 Pull image:
 
@@ -56,6 +60,7 @@ docker run \
     -P \
     --privileged \
     --name ipsec-vpn-ssl \
+    -d \
     grayking/ipsec-vpn-ssl
 ```
 
