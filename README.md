@@ -23,7 +23,7 @@ First we need 3 files to map in docker container:
 
 1. RSA private key that encoded in PEM format.
 
-    Your key's conent should ends with `-----END RSA PRIVATE KEY-----`.
+    Your key's content should ends with `-----END RSA PRIVATE KEY-----`.
     Otherwise, if your key's content ends with `-----END PRIVATE KEY-----`, 
     you have to use `openssl` to convert by command like below:
 
