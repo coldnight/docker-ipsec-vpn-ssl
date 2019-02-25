@@ -1,4 +1,4 @@
-# SSL IPsec VPN Server on Docker
+# IPsec VPN Server on Docker with SSL Enabled
 
 Docker image to run IPsec VPN server with SSL enabled.
 
