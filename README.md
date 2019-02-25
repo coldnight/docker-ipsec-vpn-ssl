@@ -57,7 +57,8 @@ docker run \
     -v /path/to/example.com.key:/etc/ipsec.d/private/example_com.key   \ # RSA private key and replace `.` to `_` in domain name
     -v /path/to/example.com.crt:/etc/ipsec.d/certs/example_com.crt     \ # Full chain certificate file and replace `.` to `_` in domain name
     -v /path/to/xauth.secrets:/etc/ipsec-xauth.secrets  \
-    -P \
+    -p 500:500/udp \
+    -p 4500:4500/udp \
     --privileged \
     --name ipsec-vpn-ssl \
     -d \
