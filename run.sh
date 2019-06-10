@@ -55,7 +55,7 @@ EOF
 
 cat <<EOF > /etc/ipsec.secrets
 : PSK '${VPN_PSK}'
-: RSA v_linuxzen_com.key
+: RSA ${DOMAIN_FN}.key
 EOF
 
 if [[ -e /etc/ipsec-xauth.secrets ]]
